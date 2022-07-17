@@ -2,8 +2,13 @@
 
 parts:
 
-micro (ESP? ATMEGA? PIC?)
-    probs ESP
+1x ESP32-WROOM-32D - Microcontroller
+1x CP2102 - USB->Serial interface
+1x MIC3775 - 5V->3.3V converter - Possibly not necessary
+2x BC847 - Transistors for programming
+1x SMD Button - onboard reset
+3x 10uF Capacitor
+4x 10k Resistor
 
 LCD (Character? Full Color? Touch?)
     probs just a large character LCD
@@ -24,3 +29,4 @@ connectors
  - Stepper Motor (probably use the built in ones, so need to buy some of those + crimpers)
  - maybe an internal fan? not sure how much current will be running through pcb
  - LCD connection... if we use a new character LCD there will be lots of pins running from LCD to micro. maybe ribbon cable?
+ 1x Micro USB SMD port
