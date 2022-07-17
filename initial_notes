@@ -1,0 +1,26 @@
+
+
+parts:
+
+micro (ESP? ATMEGA? PIC?)
+    probs ESP
+
+LCD (Character? Full Color? Touch?)
+    probs just a large character LCD
+
+buttons (SMD? Separate?)
+    SMD with some sort of large shell or something would be best
+        or maybe even THT fancy buttons
+
+Optical Encoder
+
+Stepper controllers
+
+12->3.3V voltage conversion
+    check if my 5V -> 3.3V converter is tolerant of 12V 
+        if not, maybe get a 12->5V converter and use that in conjunction with 5->3.3? will this need 5V at all?
+
+connectors 
+ - Stepper Motor (probably use the built in ones, so need to buy some of those + crimpers)
+ - maybe an internal fan? not sure how much current will be running through pcb
+ - LCD connection... if we use a new character LCD there will be lots of pins running from LCD to micro. maybe ribbon cable?
