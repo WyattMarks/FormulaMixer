@@ -1,32 +1,17 @@
 
-
-parts:
-
-1x ESP32-WROOM-32D - Microcontroller
-1x CP2102 - USB->Serial interface
-1x MIC3775 - 5V->3.3V converter - Possibly not necessary
-2x BC847 - Transistors for programming
-1x SMD Button - onboard reset
-3x 10uF Capacitor
-4x 10k Resistor
-
-LCD (Character? Full Color? Touch?)
-    probs just a large character LCD
-
-buttons (SMD? Separate?)
-    SMD with some sort of large shell or something would be best
-        or maybe even THT fancy buttons
-
-Optical Encoder
-
-Stepper controllers
-
-12->3.3V voltage conversion
-    check if my 5V -> 3.3V converter is tolerant of 12V 
-        if not, maybe get a 12->5V converter and use that in conjunction with 5->3.3? will this need 5V at all?
-
-connectors 
- - Stepper Motor (probably use the built in ones, so need to buy some of those + crimpers)
- - maybe an internal fan? not sure how much current will be running through pcb
- - LCD connection... if we use a new character LCD there will be lots of pins running from LCD to micro. maybe ribbon cable?
- 1x Micro USB SMD port
+Quantity	Part				Purpose
+1			ESP32-WROOM-32D		Microcontroller
+1			CP2102				USB->Serial interface
+1			MIC3775				5V->3.3V converter	Possibly not necessary
+2			BC847				Transistors for programming
+2			SMD Button			onboard reset, input button
+3			10uF Capacitor
+4			10k Resistor
+1			20x4 Character LCD (Standard 16 pin configuration)
+2			SN74HCS238			demuxes for stepper control
+8			BD62130AEFJ-E2		H bridge for stepper control
+1			PEC12R-4225F-S0024	Encoder + switch
+1			MC78M05ACDTRKG 		12 -> 5V regulator
+4			2.54mm JST			stepper motor plugs
+1			Micro USB SMD port
+16			2.54mm header		LCD connection
