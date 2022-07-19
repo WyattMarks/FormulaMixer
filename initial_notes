@@ -12,10 +12,7 @@ Quantity	Part				Purpose
 8			BD62130AEFJ-E2		H bridge for stepper control
 1			PEC12R-4225F-S0024	Encoder + switch
 1			MC78M05ACDTRKG 		12 -> 5V regulator
-4			2.54mm JST			stepper motor plugs
+4			4 pin 2.54mm JST	stepper motor plugs
 1			Micro USB SMD port
 16			2.54mm header		LCD connection
-
-
-Todo:
-	Connect Demuxes to ESP
+1			2 pin 2.54mm JST	power input
