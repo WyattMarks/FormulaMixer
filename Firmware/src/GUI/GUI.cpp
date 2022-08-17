@@ -44,7 +44,7 @@ void GUI::process() {
 		this->encoder.setCount(1);
 
 
-	if (digitalRead(this->select)) {
+	if (digitalRead(this->select) == LOW) {
 		usleep(10000);
 		if (digitalRead(this->select)) {
 			this->menu_callbacks[this->encoder.getCount()]();
@@ -52,7 +52,7 @@ void GUI::process() {
 		}
 	}
 
-	if (digitalRead(this->back)) {
+	if (digitalRead(this->back) == LOW) {
 		usleep(10000);
 		if (digitalRead(this->back)) {
 			this->menu_callbacks[0]();
