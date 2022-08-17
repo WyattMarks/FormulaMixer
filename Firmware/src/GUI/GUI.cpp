@@ -6,8 +6,6 @@ GUI::GUI(LiquidCrystal* lcd, int right, int left, int select, int back) {
 	this->encoder.attachHalfQuad(right, left);
 	this->menu_items = Vector<String>();
 	this->menu_callbacks = Vector<void (*)()>();
-	this->right = right;
-	this->left = left;
 	this->select = select;
 	this->back = back;
 }

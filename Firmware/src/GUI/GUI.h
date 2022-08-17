@@ -22,7 +22,7 @@ class GUI {
 		Vector<String> menu_items;
 		Vector<void (*)()> menu_callbacks;
 
-		int right, left, select, back;
+		int select, back;
 };
 
 
