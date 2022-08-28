@@ -3,26 +3,33 @@
 #include <Vector.h>
 #include <LiquidCrystal.h>
 #include <ESP32Encoder.h>
+typedef void (*callbackFunction)(void);
 
 
 class GUI {
 	public:
-		GUI(LiquidCrystal* lcd, int right, int left, int select, int back);
+		static void createMenu(Vector<String> items, Vector<callbackFunction> callbacks);
 
-		void create_menu(Vector<String> items, Vector<void (*)()> callbacks);
-
-		void process();
+		static void begin(LiquidCrystal* lcd);
+		static void attachInterrupts(int select, int back, int right, int left);
 	private:
-		void _draw();
+		static void _draw();
 
-		LiquidCrystal* lcd;
+		static LiquidCrystal* lcd;
 
-		ESP32Encoder encoder;
+		static Vector<String> menu_items;
+		static Vector<void (*)()> menu_callbacks;
+		static String str_storage[10];
+		static callbackFunction f_storage[11];
 
-		Vector<String> menu_items;
-		Vector<void (*)()> menu_callbacks;
+		static void _select_isr();
+		static void _back_isr();
+		static void _enc_isr();
 
-		int select, back;
+		static void _changeSelection(int direction);
+
+		static int select, back, right, left, selected;
+
 };
 
 
