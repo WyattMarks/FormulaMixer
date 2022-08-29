@@ -19,7 +19,6 @@ void GUI::_select_isr() {
 	static unsigned long last_interrupt = 0;
 	unsigned long current = millis();
 	if (current - last_interrupt > 100) {
-		Serial.println("SELECTED");
 		menu_callbacks[selected]();
 		selected = 1;
 	}
@@ -30,7 +29,6 @@ void GUI::_back_isr() {
 	static unsigned long last_interrupt = 0;
 	unsigned long current = millis();
 	if (current - last_interrupt > 100) {
-		Serial.println("BACK");
 		menu_callbacks[0]();
 		selected = 1;
 	}
