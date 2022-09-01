@@ -150,9 +150,13 @@ void loop() {
 
 	if (float_flag) {
 		float_flag = 0;
-		double test = GUI::getInput("Test", 0.25);
+		double test = GUI::getDouble("Test", 0.25);
 
 		Serial.println( String(test).c_str() );
+
+		String tester = GUI::getString("String", 5);
+
+		Serial.println( tester.c_str() );
 
 		main_menu_ptr();
 	}

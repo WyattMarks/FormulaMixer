@@ -4,7 +4,8 @@
 #include <LiquidCrystal.h>
 #define MENU 0
 #define FLOAT_INPUT 1
-#define INPUT_COMPLETE 2
+#define STRING_INPUT 2
+#define INPUT_COMPLETE 3
 
 typedef void (*callbackFunction)(void);
 
@@ -18,7 +19,8 @@ class GUI {
 
 		static void disableInput();
 
-		static double getInput(String item, double increment); 
+		static double getDouble(String item, double increment); 
+		static String getString(String item, int maxLength);
 	private:
 		static void _draw();
 
@@ -40,6 +42,7 @@ class GUI {
 		static bool _acceptInput;
 		static int _mode;
 		static double _selection, _inc;
+		static String _string;
 };
 
 
