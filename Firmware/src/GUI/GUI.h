@@ -2,7 +2,10 @@
 #define GUI_h
 #include <Vector.h>
 #include <LiquidCrystal.h>
-#include <ESP32Encoder.h>
+#define MENU 0
+#define FLOAT_INPUT 1
+#define INPUT_COMPLETE 2
+
 typedef void (*callbackFunction)(void);
 
 
@@ -12,6 +15,10 @@ class GUI {
 
 		static void begin(LiquidCrystal* lcd);
 		static void attachInterrupts(int select, int back, int right, int left);
+
+		static void disableInput();
+
+		static double getInput(String item, double increment); 
 	private:
 		static void _draw();
 
@@ -30,6 +37,9 @@ class GUI {
 
 		static int select, back, right, left, selected;
 
+		static bool _acceptInput;
+		static int _mode;
+		static double _selection, _inc;
 };
 
 

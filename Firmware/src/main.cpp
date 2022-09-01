@@ -13,6 +13,9 @@ typedef void (*callbackFunction)(void);
 LiquidCrystal lcd(19, 23, 18, 17, 16, 13); //LCD Pins [ RS, EN, D4, D5, D6, D7 ]
 
 Stepper motor1(0, 1);
+Stepper motor2(2, 3);
+Stepper motor3(4, 5);
+Stepper motor4(6, 7);
 
 void (*storage[10])();
 String array[10];
@@ -21,8 +24,10 @@ callbackFunction main_menu_ptr;
 callbackFunction menu_a_ptr;
 callbackFunction menu_b_ptr;
 callbackFunction stepper_ptr;
+callbackFunction float_test_ptr;
 
 uint8_t stepper_flag = 0;
+uint8_t float_flag = 0;
 
 void menu_a() {
 	Vector<String> options;
@@ -56,6 +61,7 @@ void main_menu() {
 	options.push_back("Menu A");
 	options.push_back("Menu B");
 	options.push_back("Stepper Test");
+	options.push_back("Float Test");
 
 	
 	Vector<callbackFunction> callbacks;
@@ -65,6 +71,7 @@ void main_menu() {
 	callbacks.push_back(menu_a_ptr);
 	callbacks.push_back(menu_b_ptr);
 	callbacks.push_back(stepper_ptr);
+	callbacks.push_back(float_test_ptr);
 
 	GUI::createMenu(options, callbacks);
 }
@@ -72,7 +79,13 @@ void main_menu() {
 void stepper() {
 	lcd.clear();
 	lcd.write("Trying to dispense..");
+	GUI::disableInput();
 	stepper_flag = 1;
+}
+
+void float_test() {
+	lcd.clear();
+	float_flag = 1;
 }
 
 
@@ -100,6 +113,7 @@ void setup() {
 	menu_a_ptr = menu_a;
 	menu_b_ptr = menu_b;
 	stepper_ptr = stepper;
+	float_test_ptr = float_test;
 
 	GUI::begin(&lcd);
 	GUI::attachInterrupts(SELECT, BACK, ENC_A, ENC_B);
@@ -114,17 +128,34 @@ void loop() {
 		stepper_flag = 0;
 
 		motor1.step(1000);
+		delay(1000);
+		motor1.step(-1000);
+
+		motor2.step(1000);
+		delay(1000);
+		motor2.step(-1000);
+
+		motor3.step(1000);
+		delay(1000);
+		motor3.step(-1000);
+
+		motor4.step(1000);
+		delay(1000);
+		motor4.step(-1000);
 
 		delay(1000);
 
-		motor1.step(-1000);
+		main_menu_ptr();
+	}
+
+	if (float_flag) {
+		float_flag = 0;
+		double test = GUI::getInput("Test", 0.25);
+
+		Serial.println( String(test).c_str() );
 
 		main_menu_ptr();
 	}
-}
 
-//ppnnppnnppnnppnn
-//nppnnppnnppnnppnn
-//nnppnnppnnppnnppnn
-//pnnppnnppnnppnnppnn
-//ppnnppnnppnnppnnppnn
+	usleep(5000);
+}
